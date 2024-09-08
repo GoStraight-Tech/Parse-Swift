@@ -204,7 +204,7 @@ public struct API {
         }
 
         if let token = BaseParseUser.currentContainer?.sessionToken {
-            headers["X-Parse-Session-Token"] = token
+            headers["Session-Token"] = token
         }
 
         if let installationId = BaseParseInstallation.currentContainer.installationId {
@@ -219,7 +219,7 @@ public struct API {
             case .useMasterKey:
                 headers["X-Parse-Master-Key"] = Parse.configuration.masterKey
             case .sessionToken(let sessionToken):
-                headers["X-Parse-Session-Token"] = sessionToken
+                headers["Session-Token"] = sessionToken
             case .installationId(let installationId):
                 headers["X-Parse-Installation-Id"] = installationId
             case .mimeType(let mimeType):
