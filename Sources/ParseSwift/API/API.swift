@@ -208,11 +208,11 @@ public struct API {
         }
 
         if let installationId = BaseParseInstallation.currentContainer.installationId {
-            headers["X-Parse-Installation-Id"] = installationId
+            headers["Installation-Id"] = installationId
         }
 
-        headers["X-Parse-Client-Version"] = clientVersion()
-        headers["X-Parse-Request-Id"] = UUID().uuidString.lowercased()
+        headers["Client-Version"] = clientVersion()
+        headers["Request-Id"] = UUID().uuidString.lowercased()
 
         options.forEach { (option) in
             switch option {
@@ -221,7 +221,7 @@ public struct API {
             case .sessionToken(let sessionToken):
                 headers["Session-Token"] = sessionToken
             case .installationId(let installationId):
-                headers["X-Parse-Installation-Id"] = installationId
+                headers["Installation-Id"] = installationId
             case .mimeType(let mimeType):
                 headers["Content-Type"] = mimeType
             case .fileSize(let fileSize):
