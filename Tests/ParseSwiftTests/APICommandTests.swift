@@ -380,7 +380,7 @@ class APICommandTests: XCTestCase {
         }
 
         let headers = API.getHeaders(options: [])
-        XCTAssertEqual(headers["X-Parse-Session-Token"], sessionToken)
+        XCTAssertEqual(headers["Session-Token"], sessionToken)
 
         let post = API.NonParseBodyCommand<NoBody, NoBody?>(method: .POST, path: .login) { _ in
             return nil
@@ -389,7 +389,7 @@ class APICommandTests: XCTestCase {
         switch post.prepareURLRequest(options: []) {
 
         case .success(let request):
-            XCTAssertEqual(request.allHTTPHeaderFields?["X-Parse-Session-Token"],
+            XCTAssertEqual(request.allHTTPHeaderFields?["Session-Token"],
                            sessionToken)
         case .failure(let error):
             XCTFail(error.localizedDescription)
@@ -405,7 +405,7 @@ class APICommandTests: XCTestCase {
         switch post.prepareURLRequest(options: [.sessionToken("hello")]) {
 
         case .success(let request):
-            XCTAssertEqual(request.allHTTPHeaderFields?["X-Parse-Session-Token"],
+            XCTAssertEqual(request.allHTTPHeaderFields?["Session-Token"],
                            "hello")
         case .failure(let error):
             XCTFail(error.localizedDescription)
