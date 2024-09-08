@@ -197,7 +197,7 @@ public struct API {
 
     // swiftlint:disable:next cyclomatic_complexity
     internal static func getHeaders(options: API.Options) -> [String: String] {
-        var headers: [String: String] = ["X-Parse-Application-Id": Parse.configuration.applicationId,
+        var headers: [String: String] = ["Application-Id": Parse.configuration.applicationId,
                                          "Content-Type": "application/json"]
         if let clientKey = Parse.configuration.clientKey {
             headers["X-Parse-Client-Key"] = clientKey
